@@ -21,12 +21,13 @@ def golfers_index(request):
 
 def golfers_detail(request, golfer_id):
   golfer = Golfer.objects.get(id=golfer_id)
+  courses_golfer_doesnt_have = Course.objects.exclude(id__in = golfer.courses.all().values_list('id'))
   practice_form = PracticeForm()
-  return render(request, 'golfers/detail.html', { 'golfer': golfer, 'practice_form': practice_form })  
+  return render(request, 'golfers/detail.html', { 'golfer': golfer, 'practice_form': practice_form, 'courses': courses_golfer_doesnt_have })  
 
 class GolferCreate(CreateView):
   model = Golfer
-  fields = '__all__'
+  fields = ['name', 'age', 'location', 'experience']
   success_url = '/golfers/'
 
 class GolferUpdate(UpdateView):
@@ -57,8 +58,12 @@ class CourseDetail(DetailView):
 
 class CourseUpdate(UpdateView):
   model = Course
-  fields = ['name', 'color']
+  fields = ['name', 'location']
 
 class CourseDelete(DeleteView):
   model = Course
   success_url = '/courses/'
+
+def assoc_course(request, golfer_id, course_id):
+  Golfer.objects.get(id=golfer_id).courses.add(course_id)
+  return redirect('golfers_detail', golfer_id=golfer_id)

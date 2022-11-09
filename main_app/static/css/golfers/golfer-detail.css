@@ -24,7 +24,7 @@
   margin-top: 20px;
 }
 
-.practices-toy-container {
+.practices-course-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -95,7 +95,7 @@
 }
 
 .practices-course-container > section {
-  width: 80%;
+  width: 50%;
   min-width: 360px;
   border: var(--borders);
   border-radius: var(--card-border-radius);
@@ -117,13 +117,13 @@
 }
 
 .practices h2,
-.toys h2 {
+.courses h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
 .practices h3,
-.toys h3 {
+.courses h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }
@@ -162,16 +162,16 @@
   background-color: #f3f3fd;
 }
 
-.toy-container p {
+.course-container p {
   margin: 12px 0;
 }
 
-.toy-container a {
+.course-container a {
   text-decoration: none;
   color: #111;
 }
 
-.toy-container .btn {
+.course-container .btn {
   padding: 3px 10px;
   margin-left: 10px;
 }
@@ -201,19 +201,19 @@
     margin-right: 25px;
   }
 
-  .practices-toy-container {
+  .practices-course-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .practices-toy-container > section {
+  .practices-course-container > section {
     width: 45%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .practices-toy-container {
+  .practices-course-container {
     padding: 0 40px;
   }
 }

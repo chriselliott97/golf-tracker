@@ -40,6 +40,7 @@ class Golfer(models.Model):
   location = models.CharField('Location (City, State)', max_length=100) 
   experience = models.IntegerField('Experience (Years)')
   age = models.IntegerField()
+  courses = models.ManyToManyField(Course)
 
   def __str__(self):
     return self.name

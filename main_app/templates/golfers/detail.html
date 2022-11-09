@@ -42,7 +42,7 @@
     </div>
   </div>
 </section>
-<div class="practices-toy-container">
+<div class="practices-course-container">
   <section class="practices">
     <div class="subsection-title">
       <h2>Practices</h2>
@@ -99,6 +99,56 @@
         <p>{{golfer.name}} has never practiced at the range</p>
       </div>
     {% endif %}
+  </section>
+  <section class="courses">
+    <div class="subsection-title">
+      <h2>Favorite Courses</h2>
+      {% comment %} <img src="{% static 'images/string.svg' %}" alt="A ball of string" />
+      <img src="{% static 'images/mouse.svg' %}" alt="A mouse" />
+      <img src="{% static 'images/fish.svg' %}" alt="A fishy course" /> {% endcomment %}
+    </div>
+    <h3>{{ golfer.name }}'s Courses</h3>
+    <div class="subsection-content">
+      {% if golfer.courses.count %}
+        {% for course in golfer.courses.all %}
+          <div class="course-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ course.color }}"
+            ></div>
+            <a href="{% url 'courses_detail' course.id %}">
+              <p>{{ course.name }} in {{ course.location }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="no-courses">{{golfer.name}} doesn't have any favorite courses</p>
+      {% endif %}
+    </div>
+    <h3>Available courses</h3>
+    <div class="subsection-content">
+      {% if courses.count %}
+        {% for course in courses.all %}
+          <div class="course-container">
+            <div 
+              class="color-block"
+              style="background-color: {{ course.color }}"
+            ></div>
+            <a href="{% url 'courses_detail' course.id %}">
+              <p>{{ course.name }} in {{ course.location }}</p>
+            </a>
+            <form action="{% url 'assoc_course' golfer.id course.id%}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn submit">Add course</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="all-courses">
+          {{cat.name}} already favorites all the available courses 
+        </p>
+      {% endif %}
+    </div>
   </section>
 </div>
 
