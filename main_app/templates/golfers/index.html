@@ -22,20 +22,22 @@
 <section class="card-container">
   {% for golfer in golfers %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          {% comment %} <img 
-            src="{% static 'images/sk8r-boi-cat.svg' %}" 
-            alt="A skater boy cat"
-          > {% endcomment %}
+      <a href="/golfers/{{ golfer.id }}">
+        <div class="card-content">
+          <div class="card-img-container">
+            {% comment %} <img 
+              src="{% static 'images/sk8r-boi-cat.svg' %}" 
+              alt="A skater boy cat"
+            > {% endcomment %}
+          </div>
+          <h2 class="card-title">{{ golfer.name }}</h2>
+          {% if golfer.age > 0 %}
+            <p>A {{ golfer.age }} year old golfer from {{ golfer.location }}</p>
+          {% else %}
+            <p>A golfer who isnt alive yet</p>
+          {% endif %}
         </div>
-        <h2 class="card-title">{{ golfer.name }}</h2>
-        {% if golfer.age > 0 %}
-          <p>A {{ golfer.age }} year old golfer from {{ golfer.location }}</p>
-        {% else %}
-          <p>A golfer with {{ golfer.experience }}</p>
-        {% endif %}
-      </div>
+      </a>  
     </div>
   {% endfor %}
 </section>
