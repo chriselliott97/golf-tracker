@@ -9,4 +9,5 @@ urlpatterns = [
   path('golfers/create/', views.GolferCreate.as_view(), name='golfers_create'),
   path('golfers/<int:pk>/update/', views.GolferUpdate.as_view(), name='golfers_update'),
   path('golfers/<int:pk>/delete/', views.GolferDelete.as_view(), name='golfers_delete'),
+  path('golfers/<int:golfer_id>/add_practice/', views.add_practice, name='add_practice'),
 ]

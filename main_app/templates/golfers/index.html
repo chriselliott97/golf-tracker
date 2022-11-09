@@ -25,10 +25,10 @@
       <a href="{% url 'golfers_detail' golfer.id %}">
         <div class="card-content">
           <div class="card-img-container">
-            {% comment %} <img 
-              src="{% static 'images/sk8r-boi-cat.svg' %}" 
+            <img 
+              src="{% static 'images/golferswing.svg' %}" 
               alt="A skater boy cat"
-            > {% endcomment %}
+            > 
           </div>
           <h2 class="card-title">{{ golfer.name }}</h2>
           {% if golfer.age > 0 %}

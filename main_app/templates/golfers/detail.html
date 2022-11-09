@@ -23,10 +23,10 @@
 
 <section class="golfer-container">
   <div class="golfer-img">
-    {% comment %} <img 
-      src="{% static 'images/sk8r-boi-golfer.svg' %}" 
-      alt="A skater boy golfer"
-    > {% endcomment %}
+    <img 
+      src="{% static 'images/golferswing.svg' %}" 
+      alt="A golfer"
+    >
   </div>
   <div class="golfer-details">
     <h1>{{ golfer.name }}</h1>
@@ -46,21 +46,22 @@
   <section class="practices">
     <div class="subsection-title">
       <h2>Practices</h2>
-      {% comment %} <img 
-        src="{% static 'images/golfer-cone.svg' %}" 
-        alt="An ice cream cone golfer"
+      <img 
+        src="{% static 'images/golfbag.svg' %}" 
+        alt="A golf bag"
       />
       <img 
-        src="{% static 'images/golfer-onigiri.svg' %}"
-        alt="A golfer as onigiri"
+        src="{% static 'images/practiceclub.svg' %}"
+        alt="a golf club"
       />
       <img 
-        src="{% static 'images/kitty-kabob.svg' %}" 
-        alt="A kabob of kittens"
-      /> {% endcomment %}
+        src="{% static 'images/golfgreen.svg' %}" 
+        alt="A golf green"
+      />
     </div>
     <h3>Add Practice Session</h3>
     <form
+    action="{% url 'add_practice' golfer.id %}"
       method="post" 
       class="subsection-content"
     >
@@ -69,6 +70,7 @@
       <button type="submit" class="btn submit">Add Session</button>
     </form>
     <h3>Past Sessions</h3>
+    {% if golfer.practice_set.all.count %}
     <table>
       <thead>
         <tr><th>Date</th><th>Session</th></tr>
@@ -82,6 +84,11 @@
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+			<div class="subsection-content">
+        <p>{{golfer.name}} has never practiced at the range</p>
+      </div>
+    {% endif %}
   </section>
 </div>
 

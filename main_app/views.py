@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Golfer
 from .forms import PracticeForm
@@ -35,3 +35,11 @@ class GolferUpdate(UpdateView):
 class GolferDelete(DeleteView):
   model = Golfer
   success_url = '/golfers/'
+
+def add_practice(request, golfer_id):
+  form = PracticeForm(request.POST)
+  if form.is_valid():
+    new_practice = form.save(commit=False)
+    new_practice.golfer_id = golfer_id
+    new_practice.save()
+  return redirect('golfers_detail', golfer_id=golfer_id)
