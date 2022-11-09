@@ -54,3 +54,11 @@ class CourseList(ListView):
 
 class CourseDetail(DetailView):
   model = Course  
+
+class CourseUpdate(UpdateView):
+  model = Course
+  fields = ['name', 'color']
+
+class CourseDelete(DeleteView):
+  model = Course
+  success_url = '/courses/'

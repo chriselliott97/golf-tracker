@@ -41,7 +41,7 @@
   margin: 0 8px;
 }
 
-.toy-container {
+.course-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -56,19 +56,19 @@
 
 .unpracticed,
 .practiced,
-.no-toys,
-.all-toys {
+.no-courses,
+.all-courses {
   margin: 0;
   font-weight: bold;
 }
 
 .unpracticed,
-.no-toys {
+.no-courses {
   color: var(--danger);
 }
 
 .practiced,
-.all-toys {
+.all-courses {
   color: var(--submit);
 }
 
@@ -94,7 +94,7 @@
   margin: 5px 0;
 }
 
-.practices-toy-container > section {
+.practices-course-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
