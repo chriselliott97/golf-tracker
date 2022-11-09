@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Golfer
+from .models import Golfer, Course
 from .forms import PracticeForm
 
 
@@ -43,3 +44,13 @@ def add_practice(request, golfer_id):
     new_practice.golfer_id = golfer_id
     new_practice.save()
   return redirect('golfers_detail', golfer_id=golfer_id)
+
+class CourseCreate(CreateView):
+  model = Course
+  fields = ['name', 'location']
+
+class CourseList(ListView):
+  model = Course
+
+class CourseDetail(DetailView):
+  model = Course  

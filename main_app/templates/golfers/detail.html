@@ -65,6 +65,16 @@
       method="post" 
       class="subsection-content"
     >
+      {% if golfer.practiced_for_today %}
+        <p class="practiced">
+          {{golfer.name}} has practiced today!
+        </p>
+      {% else %}
+        <p class="unpracticed">
+          {{golfer.name}} might need to practice today 
+        </p>
+      {% endif %}
+
       {% csrf_token %}
       {{ practice_form.as_p }}
       <button type="submit" class="btn submit">Add Session</button>

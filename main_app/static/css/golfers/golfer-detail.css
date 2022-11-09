@@ -54,20 +54,20 @@
   margin-right: 10px;
 }
 
-.unfed,
-.fed,
+.unpracticed,
+.practiced,
 .no-toys,
 .all-toys {
   margin: 0;
   font-weight: bold;
 }
 
-.unfed,
+.unpracticed,
 .no-toys {
   color: var(--danger);
 }
 
-.fed,
+.practiced,
 .all-toys {
   color: var(--submit);
 }
