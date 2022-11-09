@@ -26,6 +26,10 @@
       <h2>A golfer that is not alive yet</h2>
     {% endif %}
     <p>Golfer has been golfing for {{ golfer.experience }} years</p>
+    <div class="golfer-actions">
+      <a href="{% url 'golfers_update' golfer.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'golfers_delete' golfer.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 

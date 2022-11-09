@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Golfer
 
 
@@ -24,3 +24,12 @@ def golfers_detail(request, golfer_id):
 class GolferCreate(CreateView):
   model = Golfer
   fields = '__all__'
+  success_url = '/golfers/'
+
+class GolferUpdate(UpdateView):
+  model = Golfer
+  fields = ['location', 'experience', 'age']
+
+class GolferDelete(DeleteView):
+  model = Golfer
+  success_url = '/golfers/'
