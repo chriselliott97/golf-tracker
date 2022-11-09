@@ -22,7 +22,7 @@
 <section class="card-container">
   {% for golfer in golfers %}
     <div class="card">
-      <a href="/golfers/{{ golfer.id }}">
+      <a href="{% url 'golfers_detail' golfer.id %}">
         <div class="card-content">
           <div class="card-img-container">
             {% comment %} <img 
