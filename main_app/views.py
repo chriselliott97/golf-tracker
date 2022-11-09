@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Golfer
+from .forms import PracticeForm
 
 
 
@@ -19,7 +20,8 @@ def golfers_index(request):
 
 def golfers_detail(request, golfer_id):
   golfer = Golfer.objects.get(id=golfer_id)
-  return render(request, 'golfers/detail.html', { 'golfer': golfer })  
+  practice_form = PracticeForm()
+  return render(request, 'golfers/detail.html', { 'golfer': golfer, 'practice_form': practice_form })  
 
 class GolferCreate(CreateView):
   model = Golfer
