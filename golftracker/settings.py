@@ -149,5 +149,3 @@ import django_heroku
 django_heroku.settings(locals())
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
-
-WSGI_APPLICATION = 'golf-course-tracker.wsgi.application'
