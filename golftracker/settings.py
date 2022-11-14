@@ -1,3 +1,10 @@
+import environ
+env = environ.Env()
+environ.Env.read_env()
+SECRET_KEY = env('-300tu1d1ad!8pxmqm3q85vv&(p5g8li&e+jv=b_)=cy-rd=i=')
+
+DEBUG = env('DEBUG') == 'True' 
+
 """
 Django settings for golftracker project.
 
@@ -132,3 +139,15 @@ LOGOUT_REDIRECT_URL = 'home'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configure Django App for Heroku.
+import django_heroku
+
+
+# Other settings above
+django_heroku.settings(locals())
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
+
+WSGI_APPLICATION = 'golf-course-tracker.wsgi.application'
